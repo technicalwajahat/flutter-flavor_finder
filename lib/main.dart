@@ -1,5 +1,6 @@
 import 'package:flavour_finder/preferences/theme_preferences.dart';
 import 'package:flavour_finder/routes/approutes.dart';
+import 'package:flavour_finder/views/home_screen.dart';
 import 'package:flavour_finder/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -37,11 +38,10 @@ class MyApp extends StatelessWidget {
         builder: (context, ThemeNotifier notifier, child) {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'AR Hardware',
+            title: 'Flavour Finder',
             theme: notifier.darkTheme ? dark : light,
             darkTheme: notifier.darkTheme ? dark : light,
-            getPages: appRoutes(),
-            home: const LoadingScreen(),
+            home: const HomeScreen(),
             builder: (context, child) {
               return MediaQuery(
                 data: MediaQuery.of(context)
