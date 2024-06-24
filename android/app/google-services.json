@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "60731644886",
+    "project_id": "flavour-finder-fyp",
+    "storage_bucket": "flavour-finder-fyp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60731644886:android:2bc806b3a8500bd5eea277",
+        "android_client_info": {
+          "package_name": "com.flavourfinder.flavour_finder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1kNckN9WZBAQ3k4Bq6TFDg6wqbNO26SA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

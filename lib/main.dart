@@ -1,7 +1,5 @@
 import 'package:flavour_finder/preferences/theme_preferences.dart';
-import 'package:flavour_finder/routes/approutes.dart';
 import 'package:flavour_finder/views/home_screen.dart';
-import 'package:flavour_finder/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
