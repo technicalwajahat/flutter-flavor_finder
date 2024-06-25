@@ -23,7 +23,7 @@ class AuthViewModel extends GetxController {
   final UserRepository _userRepo = Get.put(UserRepository());
   final AuthRepository _authRepo = Get.put(AuthRepository());
 
-  var dropdownValue = 'User'.obs;
+  var dropdownValue = 'Seller'.obs;
   RxBool isObscure = true.obs;
   RxBool isObscure2 = true.obs;
 
