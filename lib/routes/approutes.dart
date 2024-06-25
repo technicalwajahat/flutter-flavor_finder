@@ -1,3 +1,4 @@
+import 'package:flavour_finder/views/buyer/user_orders.dart';
 import 'package:get/get.dart';
 
 import '../views/auth/forget_password_screen.dart';
@@ -76,5 +77,9 @@ appRoutes() => [
       GetPage(
         name: '/viewDetail',
         page: () => const ViewItemDetail(),
+      ),
+      GetPage(
+        name: '/userOrders',
+        page: () => const UserOrders(),
       ),
     ];

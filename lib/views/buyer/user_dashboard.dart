@@ -1,9 +1,9 @@
+import 'package:persistent_shopping_cart/persistent_shopping_cart.dart';
 import 'package:flavour_finder/views/buyer/user_home_screen.dart';
 import 'package:flavour_finder/views/buyer/user_orders.dart';
 import 'package:flavour_finder/views/buyer/user_settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:persistent_shopping_cart/persistent_shopping_cart.dart';
 
 import '../../viewModel/dashboard_viewmodel.dart';
 
@@ -23,7 +23,7 @@ class _UserDashboardState extends State<UserDashboard> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          "AR Hardware Haven",
+          "Flavor Finder",
           style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
         ),
         actions: [
@@ -38,7 +38,13 @@ class _UserDashboardState extends State<UserDashboard> {
               ),
             ),
           ),
-          const SizedBox(width: 20.0)
+          IconButton(
+            onPressed: () {
+              Get.toNamed('/userOrders');
+            },
+            icon: const Icon(Icons.shopping_bag_rounded),
+          ),
+          const SizedBox(width: 10.0),
         ],
       ),
       body: Obx(
@@ -58,9 +64,9 @@ class _UserDashboardState extends State<UserDashboard> {
               label: 'Home',
             ),
             NavigationDestination(
-              selectedIcon: Icon(Icons.shopping_bag_rounded),
-              icon: Icon(Icons.shopping_bag_rounded),
-              label: 'Orders',
+              selectedIcon: Icon(Icons.food_bank_rounded),
+              icon: Icon(Icons.food_bank_rounded),
+              label: 'Detection',
             ),
             NavigationDestination(
               selectedIcon: Icon(Icons.settings),

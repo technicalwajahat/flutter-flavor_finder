@@ -27,7 +27,7 @@ class UserRepository extends GetxController {
     final snapshot =
         await _db.collection("users").where('id', isEqualTo: uid).get();
     final userData = snapshot.docs.map((e) => UserModel.fromSnapshot(e)).single;
-    if (userData.role == 'User') {
+    if (userData.role == 'Seller') {
       Get.offAllNamed('/userDashboard');
     } else {
       Get.offAllNamed('/vendorDashboard');

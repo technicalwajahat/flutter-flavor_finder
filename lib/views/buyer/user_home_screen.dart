@@ -46,14 +46,14 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const AutoSizeText(
-              "Products",
+              "Recipes",
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
             ),
             SizedBox(
               height: Get.height * 0.005,
             ),
             const AutoSizeText(
-              "AR Hardware Tools",
+              "Flavor Finder",
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
             SizedBox(
@@ -112,7 +112,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                   } else {
                     return const Center(
                       child: AutoSizeText(
-                        'No product found!',
+                        'No recipe found!',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.w700,

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../../models/checkout_model.dart';
 import '../../viewModel/product_viewmodel.dart';
+import '../../widgets/appBar.dart';
 import '../../widgets/checkout_card.dart';
 
 class UserOrders extends StatefulWidget {
@@ -25,6 +26,7 @@ class _UserOrdersState extends State<UserOrders> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const AppBarWidget(text: "Orders"),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(24, 12, 24, 0),
         child: Column(
@@ -55,7 +57,7 @@ class _UserOrdersState extends State<UserOrders> {
                   } else {
                     return const Center(
                       child: AutoSizeText(
-                        'No product purchased!',
+                        'No recipe purchased!',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontWeight: FontWeight.w700, fontSize: 16),
