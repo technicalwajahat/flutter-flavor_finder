@@ -127,6 +127,12 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.toNamed("/chatBot");
+        },
+        child: const Icon(Icons.smart_toy),
+      ),
     );
   }
 }

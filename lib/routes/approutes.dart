@@ -1,4 +1,8 @@
+import 'package:flavour_finder/views/buyer/chatbot_screen.dart';
+import 'package:flavour_finder/views/buyer/detection_screen.dart';
+import 'package:flavour_finder/views/buyer/recipe_detection.dart';
 import 'package:flavour_finder/views/buyer/user_orders.dart';
+import 'package:flavour_finder/views/buyer/weather_detection.dart';
 import 'package:get/get.dart';
 
 import '../views/auth/forget_password_screen.dart';
@@ -81,5 +85,21 @@ appRoutes() => [
       GetPage(
         name: '/userOrders',
         page: () => const UserOrders(),
+      ),
+      GetPage(
+        name: '/detection',
+        page: () => const DetectionScreen(),
+      ),
+      GetPage(
+        name: '/recipeDetection',
+        page: () => const RecipeDetection(),
+      ),
+      GetPage(
+        name: '/weatherDetection',
+        page: () => const WeatherDetection(),
+      ),
+      GetPage(
+        name: '/chatBot',
+        page: () => const ChatScreen(),
       ),
     ];

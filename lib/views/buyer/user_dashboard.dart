@@ -1,6 +1,6 @@
+import 'package:flavour_finder/views/buyer/detection_screen.dart';
 import 'package:persistent_shopping_cart/persistent_shopping_cart.dart';
 import 'package:flavour_finder/views/buyer/user_home_screen.dart';
-import 'package:flavour_finder/views/buyer/user_orders.dart';
 import 'package:flavour_finder/views/buyer/user_settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -50,7 +50,7 @@ class _UserDashboardState extends State<UserDashboard> {
       body: Obx(
         () => IndexedStack(
           index: _dashboardViewModel.selectedIndex.value,
-          children: const [UserHomeScreen(), UserOrders(), UserSettingScreen()],
+          children: const [UserHomeScreen(), DetectionScreen(), UserSettingScreen()],
         ),
       ),
       bottomNavigationBar: Obx(
