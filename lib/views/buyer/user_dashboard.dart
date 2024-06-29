@@ -1,4 +1,4 @@
-import 'package:flavour_finder/views/buyer/detection_screen.dart';
+import 'package:flavour_finder/views/detection/detection_screen.dart';
 import 'package:persistent_shopping_cart/persistent_shopping_cart.dart';
 import 'package:flavour_finder/views/buyer/user_home_screen.dart';
 import 'package:flavour_finder/views/buyer/user_settings_screen.dart';
