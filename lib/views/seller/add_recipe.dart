@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../models/product_model.dart';
+import '../../models/recipe_model.dart';
 import '../../repository/auth_repository.dart';
 import '../../utils/utils.dart';
 import '../../viewModel/product_viewmodel.dart';
@@ -33,7 +33,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWidget(text: "Add Product"),
+      appBar: const AppBarWidget(text: "Add Recipe"),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -43,19 +43,19 @@ class _AddProductScreenState extends State<AddProductScreen> {
               child: Column(
                 children: [
                   AddProductFields(
-                    name: "Product Name",
+                    name: "Recipe Name",
                     regExp: "[a-zA-Z ]",
                     enabled: true,
-                    validator: "Product Name cannot be empty",
+                    validator: "Recipe Name cannot be empty",
                     textInputType: TextInputType.name,
                     controller: productViewModel.productName,
                     textInputAction: TextInputAction.next,
                   ),
                   SizedBox(height: Get.height * 0.02),
                   AddProductFields(
-                    name: "Product Price",
+                    name: "Recipe Price",
                     regExp: "[0-9]",
-                    validator: "Product Price cannot be empty",
+                    validator: "Recipe Price cannot be empty",
                     textInputType: TextInputType.number,
                     controller: productViewModel.productPrice,
                     textInputAction: TextInputAction.next,
@@ -64,9 +64,9 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   SizedBox(height: Get.height * 0.02),
                   AddProductFields(
                     regExp: "[a-zA-Z ]",
-                    name: "Product Material",
+                    name: "Recipe Type",
                     enabled: true,
-                    validator: "Product Material cannot be empty",
+                    validator: "Recipe Type cannot be empty",
                     textInputType: TextInputType.name,
                     controller: productViewModel.productMaterial,
                     textInputAction: TextInputAction.next,
@@ -74,98 +74,29 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   SizedBox(height: Get.height * 0.02),
                   AddProductFields(
                     regExp: "[0-9]",
-                    name: "Product Stock",
+                    name: "Recipe Stock",
                     enabled: true,
-                    validator: "Product Stock cannot be empty",
+                    validator: "Recipe Stock cannot be empty",
                     textInputType: TextInputType.number,
                     controller: productViewModel.productStock,
                     textInputAction: TextInputAction.next,
                   ),
                   SizedBox(height: Get.height * 0.02),
-                  DropdownButtonFormField<String>(
-                    autofocus: false,
-                    value: productViewModel.productCategory.value,
-                    isExpanded: true,
-                    onChanged: productViewModel.onChangedCategory,
-                    items: <String>[
-                      'Select Category',
-                      'Hand Tools',
-                      'Power Tools',
-                      'Measurement Tools',
-                      'Plumping Tools',
-                      'Cutting Tools',
-                      'Fastening Tools',
-                      'Gardening Tools',
-                      'Electrical Tools',
-                      'Flooring & Paints',
-                    ].map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: AutoSizeText(value),
-                      );
-                    }).toList(),
-                    validator: (value) {
-                      if (value == "Select Category") {
-                        return ("Please Choose a Category");
-                      }
-                      return null;
-                    },
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.fromLTRB(20, 15, 0, 15),
-                      hintText: "Categories",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: Get.height * 0.02),
-                  Obx(
-                    () => DropdownButtonFormField<String>(
-                      autofocus: false,
-                      value: productViewModel.productColor.value,
-                      isExpanded: true,
-                      onChanged: productViewModel.colorEnabled.value
-                          ? productViewModel.onChangedColor
-                          : null,
-                      items: [
-                        const DropdownMenuItem<String>(
-                          value: "No Color",
-                          child: AutoSizeText("No Color"),
-                        ),
-                        ...productViewModel.colorMap.keys
-                            .where((color) => color != "No Color")
-                            .map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: AutoSizeText(value),
-                          );
-                        }),
-                      ],
-                      validator: (value) {
-                        if (productViewModel.productCategory.value ==
-                            "Flooring & Paints") {
-                          if (value == "No Color") {
-                            return ("Please Choose a Color");
-                          }
-                        }
-                        return null;
-                      },
-                      decoration: InputDecoration(
-                        contentPadding:
-                            const EdgeInsets.fromLTRB(20, 15, 0, 15),
-                        hintText: "Colors",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                    ),
+                  AddProductFields(
+                    regExp: "[a-zA-z_,@ ]",
+                    name: "Recipe Ingredients",
+                    enabled: true,
+                    validator: "Recipe Ingredients cannot be empty",
+                    textInputType: TextInputType.number,
+                    controller: productViewModel.productCategory,
+                    textInputAction: TextInputAction.next,
                   ),
                   SizedBox(height: Get.height * 0.02),
                   AddProductFields(
-                    name: "Product Shipped",
+                    name: "Recipe Shipped",
                     regExp: "[a-zA-Z ]",
                     enabled: false,
-                    validator: "Product Shipped cannot be empty",
+                    validator: "Recipe Shipped cannot be empty",
                     textInputType: TextInputType.name,
                     controller: productViewModel.productShipped,
                     textInputAction: TextInputAction.done,
@@ -229,20 +160,17 @@ class _AddProductScreenState extends State<AddProductScreen> {
     if (productViewModel.storagePath.value == "Choose Image!") {
       Utils.snackBar("Please choose an image", context);
     } else {
-      productViewModel.productColorCode.value =
-          productViewModel.getColorCode(productViewModel.productColor.value)!;
       FocusManager.instance.primaryFocus?.unfocus();
       if (_formKey.currentState!.validate()) {
         final productModel = ProductModel(
           userId: authRepo.firebaseUser.value!.uid,
-          productName: productViewModel.productName.text.trim(),
-          productPrice: productViewModel.productPrice.text.trim(),
-          productMaterial: productViewModel.productMaterial.text.trim(),
-          productShipped: productViewModel.productShipped.text.trim(),
-          productCategories: productViewModel.productCategory.value.trim(),
-          productStock: productViewModel.productStock.text.trim(),
-          productImage: productViewModel.storagePath.value,
-          productColor: productViewModel.productColorCode,
+          recipeName: productViewModel.productName.text.trim(),
+          recipePrice: productViewModel.productPrice.text.trim(),
+          recipeType: productViewModel.productMaterial.text.trim(),
+          recipeShipped: productViewModel.productShipped.text.trim(),
+          recipeIngredients: productViewModel.productCategory.text.trim(),
+          recipeStock: productViewModel.productStock.text.trim(),
+          recipeImage: productViewModel.storagePath.value,
         );
         productViewModel.addProduct(productModel, context).then((value) {
           productViewModel.fetchProducts();

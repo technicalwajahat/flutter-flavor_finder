@@ -37,7 +37,7 @@ class _ViewItemDetailState extends State<ViewItemDetail> {
                     ),
                   ),
                   AutoSizeText(
-                    "${products[0].productName}",
+                    "${products[0].recipeName}",
                     style: const TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
@@ -58,7 +58,7 @@ class _ViewItemDetailState extends State<ViewItemDetail> {
                     ),
                   ),
                   AutoSizeText(
-                    "${products[0].productPrice}\$",
+                    "${products[0].recipePrice}\$",
                     style: const TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
@@ -79,7 +79,7 @@ class _ViewItemDetailState extends State<ViewItemDetail> {
                     ),
                   ),
                   AutoSizeText(
-                    "${products[0].productMaterial}",
+                    "${products[0].recipeType}",
                     style: const TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
@@ -100,7 +100,7 @@ class _ViewItemDetailState extends State<ViewItemDetail> {
                     ),
                   ),
                   AutoSizeText(
-                    "${products[0].productStock}",
+                    "${products[0].recipeStock}",
                     style: const TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
@@ -121,7 +121,7 @@ class _ViewItemDetailState extends State<ViewItemDetail> {
                     ),
                   ),
                   AutoSizeText(
-                    "${products[0].productShipped}",
+                    "${products[0].recipeShipped}",
                     style: const TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
@@ -142,7 +142,7 @@ class _ViewItemDetailState extends State<ViewItemDetail> {
                     ),
                   ),
                   AutoSizeText(
-                    "${products[0].productCategories}",
+                    "${products[0].recipeIngredients}",
                     style: const TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
@@ -163,7 +163,7 @@ class _ViewItemDetailState extends State<ViewItemDetail> {
                     ),
                   ),
                   AutoSizeText(
-                    "${products[0].productColor}",
+                    "${products[0].recipeColor}",
                     style: const TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
@@ -205,15 +205,15 @@ class _ViewItemDetailState extends State<ViewItemDetail> {
                 ),
                 product: PersistentShoppingCartItem(
                   productId: products[0].id.toString(),
-                  productName: products[0].productName.toString(),
-                  unitPrice: double.parse(products[0].productPrice.toString()),
+                  productName: products[0].recipeName.toString(),
+                  unitPrice: double.parse(products[0].recipePrice.toString()),
                   quantity: 1,
-                  productDescription: products[0].productMaterial,
-                  productThumbnail: products[0].productImage,
+                  productDescription: products[0].recipeType,
+                  productThumbnail: products[0].recipeImage,
                 ),
               ),
               SizedBox(height: Get.height * 0.01),
-              products[0].productCategories == "Flooring & Paints"
+              products[0].recipeIngredients == "Flooring & Paints"
                   ? FilledButton(
                       style: FilledButton.styleFrom(
                         minimumSize: const Size.fromHeight(50),
@@ -223,7 +223,7 @@ class _ViewItemDetailState extends State<ViewItemDetail> {
                       ),
                       onPressed: () {
                         Get.toNamed("/takePicture",
-                            arguments: [products[0].productColor]);
+                            arguments: [products[0].recipeColor]);
                       },
                       child: const AutoSizeText(
                         "Visualize Paint",

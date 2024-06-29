@@ -50,7 +50,11 @@ class _UserDashboardState extends State<UserDashboard> {
       body: Obx(
         () => IndexedStack(
           index: _dashboardViewModel.selectedIndex.value,
-          children: const [UserHomeScreen(), DetectionScreen(), UserSettingScreen()],
+          children: const [
+            UserHomeScreen(),
+            DetectionScreen(),
+            UserSettingScreen()
+          ],
         ),
       ),
       bottomNavigationBar: Obx(

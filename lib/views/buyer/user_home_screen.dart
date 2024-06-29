@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../models/product_model.dart';
+import '../../models/recipe_model.dart';
 import '../../viewModel/dashboard_viewmodel.dart';
 import '../../viewModel/product_viewmodel.dart';
 import '../../widgets/user_product_cards.dart';
@@ -16,20 +16,6 @@ class UserHomeScreen extends StatefulWidget {
 
 class _UserHomeScreenState extends State<UserHomeScreen> {
   final _productViewModel = Get.put(ProductViewModel());
-  final _dashboardViewModel = Get.put(DashboardViewModel());
-
-  final List<String> _chipLabel = [
-    'All',
-    'Hand Tools',
-    'Power Tools',
-    'Measurement Tools',
-    'Plumping Tools',
-    'Cutting Tools',
-    'Fastening Tools',
-    'Gardening Tools',
-    'Electrical Tools',
-    'Flooring & Paints',
-  ];
 
   @override
   void initState() {
@@ -47,7 +33,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
           children: [
             const AutoSizeText(
               "Recipes",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
             ),
             SizedBox(
               height: Get.height * 0.005,
@@ -57,36 +43,8 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
             SizedBox(
-              height: Get.height * 0.01,
+              height: Get.height * 0.02,
             ),
-            Obx(
-              () => SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Wrap(
-                  spacing: 5,
-                  children: List<Widget>.generate(
-                    _chipLabel.length,
-                    (int index) {
-                      return ChoiceChip(
-                        label: AutoSizeText(_chipLabel[index]),
-                        selected: _dashboardViewModel.selectedChip == index,
-                        onSelected: (bool selected) {
-                          _dashboardViewModel.selectedChip =
-                              selected ? index : null;
-                          if (selected) {
-                            _productViewModel
-                                .fetchAllProducts(_chipLabel[index]);
-                          } else {
-                            _productViewModel.fetchAllProducts('All');
-                          }
-                        },
-                      );
-                    },
-                  ).toList(),
-                ),
-              ),
-            ),
-            SizedBox(height: Get.height * 0.02),
             StreamBuilder<List<ProductModel>>(
               stream: _productViewModel.productsStream,
               builder: (context, snapshot) {

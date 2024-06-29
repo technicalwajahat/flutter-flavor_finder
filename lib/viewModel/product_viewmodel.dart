@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../models/checkout_model.dart';
-import '../models/product_model.dart';
+import '../models/recipe_model.dart';
 import '../repository/auth_repository.dart';
 import '../repository/product_repository.dart';
 
@@ -16,30 +16,13 @@ class ProductViewModel extends GetxController {
   final ProductRepository _productRepo = Get.put(ProductRepository());
   final AuthRepository _authRepo = Get.put(AuthRepository());
   var storagePath = "Choose Image!".obs;
-  var productCategory = 'Select Category'.obs;
-  var productColor = 'No Color'.obs;
-  RxList<int> productColorCode = [255, 255, 255].obs;
   Rx<bool> colorEnabled = false.obs;
-
-  Map<String, List<int>> colorMap = {
-    "No Color": [32, 32, 32],
-    "White": [255, 255, 255],
-    "Red": [255, 0, 0],
-    "Green": [0, 255, 0],
-    "Blue": [0, 0, 25],
-    "Grey": [128, 128, 128],
-    "Bitter Sweet": [255, 102, 102],
-    "Dark Orange": [255, 128, 0],
-    "Yellow": [255, 255, 0],
-    "Indigo": [76, 0, 153],
-    "Deep Magenta": [204, 0, 204],
-    "Brilliant Azure": [51, 153, 255]
-  };
 
   final productName = TextEditingController();
   final productPrice = TextEditingController();
   final productMaterial = TextEditingController();
   final productStock = TextEditingController();
+  final productCategory = TextEditingController();
   final productShipped = TextEditingController(text: "Ships all over Pakistan");
 
   final _productsController = StreamController<List<ProductModel>>.broadcast();
@@ -55,9 +38,8 @@ class ProductViewModel extends GetxController {
     productPrice.clear();
     productMaterial.clear();
     productStock.clear();
-    productCategory.value = "Select Category";
+    productCategory.clear();
     storagePath.value = "Choose Image!";
-    productColor.value = "No Color";
     colorEnabled.value = false;
   }
 
@@ -119,45 +101,6 @@ class ProductViewModel extends GetxController {
         .then((value) {
       Get.toNamed('/paintWall', arguments: value!['result']);
     });
-  }
-
-  // On Change Category
-  void onChangedCategory(String? value) {
-    if (value != null) {
-      productCategory.value = value;
-      if (value.endsWith("Flooring & Paints")) {
-        colorEnabled.value = true;
-      } else {
-        colorEnabled.value = false;
-        productColor.value = "No Color";
-      }
-    }
-  }
-
-  // On Change Color
-  void onChangedColor(String? value) {
-    if (value != null) {
-      productColor.value = value;
-    }
-  }
-
-  // Get Color Code
-  List<int>? getColorCode(String colorKey) {
-    return colorMap[colorKey];
-  }
-
-  // Find Key From Value
-  String? findKeyFromValue(List? values) {
-    if (values == null) {
-      return "No Color";
-    }
-
-    for (var entry in colorMap.entries) {
-      if (listEquals(values, entry.value)) {
-        return entry.key;
-      }
-    }
-    return "No Color";
   }
 
   @override

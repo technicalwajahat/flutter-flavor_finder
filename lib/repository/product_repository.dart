@@ -10,7 +10,7 @@ import 'package:http/http.dart' as http;
 import 'package:persistent_shopping_cart/persistent_shopping_cart.dart';
 
 import '../models/checkout_model.dart';
-import '../models/product_model.dart';
+import '../models/recipe_model.dart';
 import '../utils/utils.dart';
 
 class ProductRepository extends GetxController {

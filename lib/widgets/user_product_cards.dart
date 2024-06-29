@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:persistent_shopping_cart/model/cart_model.dart';
 import 'package:persistent_shopping_cart/persistent_shopping_cart.dart';
 
-import '../models/product_model.dart';
+import '../models/recipe_model.dart';
 
 class UserProductCard extends StatelessWidget {
   final ProductModel product;
@@ -32,7 +32,7 @@ class UserProductCard extends StatelessWidget {
                     topRight: Radius.circular(0),
                     topLeft: Radius.circular(10)),
                 child: Image.network(
-                  product.productImage.toString(),
+                  product.recipeImage.toString(),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -42,14 +42,14 @@ class UserProductCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AutoSizeText(
-                  product.productName.toString(),
+                  product.recipeName.toString(),
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),
                 ),
                 AutoSizeText(
-                  "Price: ${product.productPrice}\$",
+                  "Price: ${product.recipePrice}\$",
                   style: const TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
@@ -57,7 +57,7 @@ class UserProductCard extends StatelessWidget {
                 ),
                 SizedBox(height: Get.height * 0.003),
                 AutoSizeText(
-                  "Stock: ${product.productStock}",
+                  "Stock: ${product.recipeStock}",
                   style: const TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
@@ -100,11 +100,11 @@ class UserProductCard extends StatelessWidget {
                   ),
                   product: PersistentShoppingCartItem(
                     productId: product.id.toString(),
-                    productName: product.productName.toString(),
-                    unitPrice: double.parse(product.productPrice.toString()),
+                    productName: product.recipeName.toString(),
+                    unitPrice: double.parse(product.recipePrice.toString()),
                     quantity: 1,
-                    productDescription: product.productMaterial,
-                    productThumbnail: product.productImage,
+                    productDescription: product.recipeType,
+                    productThumbnail: product.recipeImage,
                   ),
                 )
               ],

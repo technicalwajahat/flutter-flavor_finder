@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../models/product_model.dart';
+import '../models/recipe_model.dart';
 import '../viewModel/product_viewmodel.dart';
 
 class VendorProductCard extends StatelessWidget {
@@ -31,7 +31,7 @@ class VendorProductCard extends StatelessWidget {
                     topRight: Radius.circular(0),
                     topLeft: Radius.circular(10)),
                 child: Image.network(
-                  product.productImage.toString(),
+                  product.recipeImage.toString(),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -44,7 +44,7 @@ class VendorProductCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AutoSizeText(
-                  product.productName.toString(),
+                  product.recipeName.toString(),
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
@@ -52,7 +52,7 @@ class VendorProductCard extends StatelessWidget {
                 ),
                 SizedBox(height: Get.height * 0.008),
                 AutoSizeText(
-                  "Price: ${product.productPrice}\$",
+                  "Price: ${product.recipePrice}\$",
                   style: const TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
@@ -60,7 +60,7 @@ class VendorProductCard extends StatelessWidget {
                 ),
                 SizedBox(height: Get.height * 0.003),
                 AutoSizeText(
-                  "Stock: ${product.productStock}",
+                  "Stock: ${product.recipeStock}",
                   style: const TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 14,

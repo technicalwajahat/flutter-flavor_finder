@@ -7,12 +7,6 @@ class DashboardViewModel extends GetxController {
   var selectedIndex = 0.obs;
   final _authRepo = Get.put(AuthRepository());
 
-  RxInt _selectedChip = RxInt(0);
-
-  get selectedChip => _selectedChip.value;
-
-  set selectedChip(index) => _selectedChip.value = index;
-
   void handleScreenChanged(int selectedScreen) {
     if (selectedScreen == 0) {
       Get.back();

@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flavour_finder/repository/user_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:persistent_shopping_cart/persistent_shopping_cart.dart';
 
 import '../exceptions/auth_exceptions.dart';
 import '../utils/utils.dart';
@@ -66,6 +67,7 @@ class AuthRepository extends GetxController {
   // Logout
   Future<void> logout() async {
     await _auth.signOut();
+    PersistentShoppingCart().clearCart();
   }
 
   // Navigate to Dashboard

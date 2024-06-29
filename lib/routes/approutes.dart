@@ -16,8 +16,8 @@ import '../views/buyer/user_dashboard.dart';
 import '../views/buyer/user_home_screen.dart';
 import '../views/buyer/user_settings_screen.dart';
 import '../views/buyer/view_item_detail.dart';
-import '../views/seller/add_product.dart';
-import '../views/seller/edit_product.dart';
+import '../views/seller/add_recipe.dart';
+import '../views/seller/edit_recipe.dart';
 import '../views/seller/vendor_dashboard.dart';
 import '../widgets/loading_widget.dart';
 
