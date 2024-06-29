@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../models/recipe_model.dart';
-import '../../viewModel/dashboard_viewmodel.dart';
 import '../../viewModel/product_viewmodel.dart';
 import '../../widgets/user_product_cards.dart';
 

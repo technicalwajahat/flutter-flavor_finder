@@ -33,8 +33,6 @@ class _EditProductScreenState extends State<EditProductScreen> {
     final productPrice = TextEditingController(text: product.recipePrice);
     final productMaterial = TextEditingController(text: product.recipeType);
     final productStock = TextEditingController(text: product.recipeStock);
-    final productCategories =
-        TextEditingController(text: product.recipeIngredients);
     final productShipped = TextEditingController(text: product.recipeShipped);
 
     return Scaffold(
