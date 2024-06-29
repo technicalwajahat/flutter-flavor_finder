@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flavour_finder/widgets/appBar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:intl/intl.dart';
@@ -20,6 +20,8 @@ class _ChatScreenState extends State<ChatScreen> {
   Future<void> sendMessage() async {
     final message = _userInput.text;
 
+    _userInput.clear();
+
     setState(() {
       _messages
           .add(Message(isUser: true, message: message, date: DateTime.now()));
@@ -32,15 +34,20 @@ class _ChatScreenState extends State<ChatScreen> {
       _messages.add(Message(
           isUser: false, message: response.text ?? "", date: DateTime.now()));
     });
+
+    _userInput.clear();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const AppBarWidget(text: 'ChatBot'),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
               child: ListView.builder(
                   itemCount: _messages.length,
                   itemBuilder: (context, index) {
@@ -49,9 +56,11 @@ class _ChatScreenState extends State<ChatScreen> {
                         isUser: message.isUser,
                         message: message.message,
                         date: DateFormat('HH:mm').format(message.date));
-                  })),
+                  }),
+            ),
+          ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 18),
             child: Row(
               children: [
                 Expanded(
@@ -62,7 +71,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        label: const Text('Enter Your Message')),
+                        label: const Text('Enter Prompt')),
                   ),
                 ),
                 const Spacer(),
@@ -105,29 +114,33 @@ class Messages extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(15),
-      margin: const EdgeInsets.symmetric(vertical: 15)
+      padding: const EdgeInsets.all(18),
+      margin: const EdgeInsets.symmetric(vertical: 8)
           .copyWith(left: isUser ? 100 : 10, right: isUser ? 10 : 100),
       decoration: BoxDecoration(
-          color: isUser ? Colors.blueAccent : Colors.grey.shade400,
+          color: isUser ? Colors.yellow : Colors.grey.shade500,
           borderRadius: BorderRadius.only(
-              topLeft: const Radius.circular(10),
-              bottomLeft: isUser ? const Radius.circular(10) : Radius.zero,
-              topRight: const Radius.circular(10),
-              bottomRight: isUser ? Radius.zero : const Radius.circular(10))),
+              topLeft: const Radius.circular(18),
+              bottomLeft: isUser ? const Radius.circular(18) : Radius.zero,
+              topRight: const Radius.circular(18),
+              bottomRight: isUser ? Radius.zero : const Radius.circular(18))),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            message,
+            message.replaceAll("*", ""),
             style: TextStyle(
-                fontSize: 16, color: isUser ? Colors.white : Colors.black),
+                fontSize: 16, color: isUser ? Colors.black : Colors.black),
           ),
-          Text(
-            date,
-            style: TextStyle(
-              fontSize: 10,
-              color: isUser ? Colors.white : Colors.black,
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Text(
+              date,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+                color: isUser ? Colors.black : Colors.black,
+              ),
             ),
           )
         ],
