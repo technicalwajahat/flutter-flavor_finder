@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../widgets/appBar.dart';
+
 class WeatherDetection extends StatefulWidget {
   const WeatherDetection({super.key});
 
@@ -10,6 +12,8 @@ class WeatherDetection extends StatefulWidget {
 class _WeatherDetectionState extends State<WeatherDetection> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return const Scaffold(
+      appBar: AppBarWidget(text: "Weather Detection"),
+    );
   }
 }
