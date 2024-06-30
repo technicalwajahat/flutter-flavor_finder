@@ -157,4 +157,22 @@ class ProductRepository extends GetxController {
       Get.offAllNamed('/userDashboard');
     });
   }
+
+  // Get Recipe Recommendations
+  Future<List> getRecommendations(String ingredients) async {
+    final response = await http.post(
+      Uri.parse('http://10.0.2.2:8005/recommend_by_ingredients'),
+      body: {'ingredients': ingredients},
+    );
+
+    if (response.statusCode == 200) {
+      try {
+        return json.decode(response.body);
+      } catch (e) {
+        throw Exception('Failed to parse JSON: ${e.toString()}');
+      }
+    } else {
+      throw Exception('Failed to load recommendations');
+    }
+  }
 }

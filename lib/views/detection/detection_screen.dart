@@ -21,7 +21,7 @@ class _DetectionScreenState extends State<DetectionScreen> {
             children: [
               FilledButton.icon(
                 icon: const Icon(Icons.fastfood_rounded, size: 22.0),
-                label: const Text('Recipe Detection'),
+                label: const Text('Recipe Recommendation'),
                 onPressed: () {
                   Get.toNamed("/recipeDetection");
                 },

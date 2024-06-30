@@ -2,6 +2,7 @@ import 'package:flavour_finder/views/buyer/chatbot_screen.dart';
 import 'package:flavour_finder/views/detection/detection_screen.dart';
 import 'package:flavour_finder/views/detection/recipe_detection.dart';
 import 'package:flavour_finder/views/buyer/user_orders.dart';
+import 'package:flavour_finder/views/detection/view_recipes.dart';
 import 'package:flavour_finder/views/detection/weather_detection.dart';
 import 'package:get/get.dart';
 
@@ -13,6 +14,7 @@ import '../views/buyer/checkout_screen.dart';
 import '../views/buyer/user_dashboard.dart';
 import '../views/buyer/user_home_screen.dart';
 import '../views/buyer/user_settings_screen.dart';
+import '../views/detection/detail_recipe.dart';
 import '../views/seller/add_recipe.dart';
 import '../views/seller/edit_recipe.dart';
 import '../views/seller/vendor_dashboard.dart';
@@ -86,5 +88,13 @@ appRoutes() => [
       GetPage(
         name: '/chatBot',
         page: () => const ChatScreen(),
+      ),
+      GetPage(
+        name: '/viewRecipe',
+        page: () => const ViewRecipes(),
+      ),
+      GetPage(
+        name: '/detailRecipe',
+        page: () => const DetailRecipe(),
       ),
     ];

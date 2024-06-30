@@ -92,13 +92,10 @@ class ProductViewModel extends GetxController {
     _checkoutController.add(checkout);
   }
 
-  // Upload Product
-  void uploadProductAPI(
-      File imageFile, BuildContext context, List<dynamic> colorCodes) async {
-    await _productRepo
-        .sendImageToAPI(imageFile, context, colorCodes)
-        .then((value) {
-      Get.toNamed('/paintWall', arguments: value!['result']);
+  // Upload Recipes
+  fetchRecipes(String ingredients) async {
+    return await _productRepo.getRecommendations(ingredients).then((data) {
+      Get.toNamed("/viewRecipe", arguments: data);
     });
   }
 
