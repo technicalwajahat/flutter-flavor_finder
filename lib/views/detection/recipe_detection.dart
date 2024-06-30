@@ -95,12 +95,20 @@ class _RecipeDetectionState extends State<RecipeDetection> {
                       onPressed: () {
                         setState(() {
                           _allIngredients.clear();
+                          ingredients = "";
                           for (var controller in _textFields) {
-                            _allIngredients.add(controller.text);
+                            if (controller.text.isNotEmpty) {
+                              _allIngredients.add(controller.text);
+                            }
                           }
-                          ingredients = _allIngredients.join(' ');
+                          if (_allIngredients.isNotEmpty) {
+                            ingredients = _allIngredients.join(' ');
+                          }
                         });
-                        _productViewModel.fetchRecipes(ingredients);
+
+                        if (ingredients.isNotEmpty) {
+                          _productViewModel.fetchRecipes(ingredients);
+                        }
                       },
                       child: const Text(
                         'View Recipes',

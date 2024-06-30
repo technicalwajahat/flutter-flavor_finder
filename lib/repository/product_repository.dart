@@ -175,4 +175,22 @@ class ProductRepository extends GetxController {
       throw Exception('Failed to load recommendations');
     }
   }
+
+  // Get Recipe Recommendations
+  Future<List> getWeatherRecipe(String weather) async {
+    final response = await http.post(
+      Uri.parse('http://10.0.2.2:8005/recommend_by_weather'),
+      body: {'weather': weather},
+    );
+
+    if (response.statusCode == 200) {
+      try {
+        return json.decode(response.body);
+      } catch (e) {
+        throw Exception('Failed to parse JSON: ${e.toString()}');
+      }
+    } else {
+      throw Exception('Failed to load recommendations');
+    }
+  }
 }

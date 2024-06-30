@@ -99,6 +99,13 @@ class ProductViewModel extends GetxController {
     });
   }
 
+  // Upload Recipes
+  fetchWeatherRecipes(String weather) async {
+    return await _productRepo.getWeatherRecipe(weather).then((data) {
+      Get.toNamed("/viewRecipe", arguments: data);
+    });
+  }
+
   @override
   void onClose() {
     _productsController.close();
