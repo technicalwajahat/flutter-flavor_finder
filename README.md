@@ -1,6 +1,6 @@
 # flavour_finder
 
-Flavour FInder Web Project
+Flavour Finder Mobile Project - Flutter
 
 ## Getting Started
 
