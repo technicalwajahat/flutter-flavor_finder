@@ -87,7 +87,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                     name: "Recipe Ingredients",
                     enabled: true,
                     validator: "Recipe Ingredients cannot be empty",
-                    textInputType: TextInputType.number,
+                    textInputType: TextInputType.text,
                     controller: productViewModel.productCategory,
                     textInputAction: TextInputAction.next,
                   ),

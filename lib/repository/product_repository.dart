@@ -161,7 +161,7 @@ class ProductRepository extends GetxController {
   // Get Recipe Recommendations
   Future<List> getRecommendations(String ingredients) async {
     final response = await http.post(
-      Uri.parse('http://10.0.2.2:8005/recommend_by_ingredients'),
+      Uri.parse('http://192.168.11.107:8005/recommend_by_ingredients'),
       body: {'ingredients': ingredients},
     );
 
@@ -179,7 +179,7 @@ class ProductRepository extends GetxController {
   // Get Recipe Recommendations
   Future<List> getWeatherRecipe(String weather) async {
     final response = await http.post(
-      Uri.parse('http://10.0.2.2:8005/recommend_by_weather'),
+      Uri.parse('http://192.168.11.107:8005/recommend_by_weather'),
       body: {'weather': weather},
     );
 

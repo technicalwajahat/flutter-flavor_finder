@@ -90,7 +90,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                     name: "Recipe Ingredients",
                     enabled: true,
                     validator: "Recipe Ingredients cannot be empty",
-                    textInputType: TextInputType.number,
+                    textInputType: TextInputType.text,
                     controller: productStock,
                     textInputAction: TextInputAction.done,
                   ),
