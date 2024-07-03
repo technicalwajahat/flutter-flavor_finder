@@ -33,6 +33,8 @@ class _EditProductScreenState extends State<EditProductScreen> {
     final productPrice = TextEditingController(text: product.recipePrice);
     final productMaterial = TextEditingController(text: product.recipeType);
     final productStock = TextEditingController(text: product.recipeStock);
+    final productIngredeints =
+        TextEditingController(text: product.recipeIngredients);
     final productShipped = TextEditingController(text: product.recipeShipped);
 
     return Scaffold(
@@ -82,16 +84,16 @@ class _EditProductScreenState extends State<EditProductScreen> {
                     validator: "Recipe Stock cannot be empty",
                     textInputType: TextInputType.number,
                     controller: productStock,
-                    textInputAction: TextInputAction.done,
+                    textInputAction: TextInputAction.next,
                   ),
                   SizedBox(height: Get.height * 0.02),
                   EditProductFields(
-                    regExp: "[0-9]",
+                    regExp: "[a-zA-z_,@ ]",
                     name: "Recipe Ingredients",
                     enabled: true,
                     validator: "Recipe Ingredients cannot be empty",
                     textInputType: TextInputType.text,
-                    controller: productStock,
+                    controller: productIngredeints,
                     textInputAction: TextInputAction.done,
                   ),
                   SizedBox(height: Get.height * 0.02),

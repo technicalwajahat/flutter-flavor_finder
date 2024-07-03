@@ -17,8 +17,8 @@ class ProductRepository extends GetxController {
   static ProductRepository get instance => Get.find();
   final _db = FirebaseFirestore.instance;
 
-  Future<Map<String, dynamic>?> sendImageToAPI(
-      File imageFile, BuildContext context, List colorCodes) async {
+  Future<Map<String, dynamic>?> sendImageToAPI(File imageFile,
+      BuildContext context, List colorCodes) async {
     try {
       List<int> imageBytes = imageFile.readAsBytesSync();
       String base64image = base64Encode(imageBytes);
@@ -26,17 +26,17 @@ class ProductRepository extends GetxController {
 
       var response = await client
           .post(
-            Uri.parse("http://192.168.100.7:8001/getProcessedImage"),
-            headers: {
-              "Content-Type": "application/json",
-              'Accept': "*/*",
-              'connection': 'keep-alive',
-              'Accept-Encoding': 'gzip, deflate, br',
-            },
-            body: jsonEncode(
-              {"img_data": base64image, "color_picked": colorCodes},
-            ),
-          )
+        Uri.parse("http://192.168.100.7:8001/getProcessedImage"),
+        headers: {
+          "Content-Type": "application/json",
+          'Accept': "*/*",
+          'connection': 'keep-alive',
+          'Accept-Encoding': 'gzip, deflate, br',
+        },
+        body: jsonEncode(
+          {"img_data": base64image, "color_picked": colorCodes},
+        ),
+      )
           .timeout((const Duration(seconds: 30)));
 
       if (response.statusCode == 200) {
@@ -57,7 +57,9 @@ class ProductRepository extends GetxController {
   }
 
   Future<String> uploadProduct(String path, File image) async {
-    final filename = image.path.split('/').last;
+    final filename = image.path
+        .split('/')
+        .last;
     final ref = FirebaseStorage.instance.ref(path).child(filename);
     await ref.putFile(File(image.path));
     final url = await ref.getDownloadURL();
@@ -80,7 +82,7 @@ class ProductRepository extends GetxController {
         .get();
 
     final receiptData =
-        querySnapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
+    querySnapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
     return receiptData;
   }
 
@@ -100,7 +102,7 @@ class ProductRepository extends GetxController {
           .get();
     }
     final receiptData =
-        querySnapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
+    querySnapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
     return receiptData;
   }
 
@@ -111,7 +113,7 @@ class ProductRepository extends GetxController {
         .where("userId", isEqualTo: userId)
         .get();
     final checkoutData =
-        querySnapshot.docs.map((e) => CheckoutModel.fromSnapshot(e)).toList();
+    querySnapshot.docs.map((e) => CheckoutModel.fromSnapshot(e)).toList();
     return checkoutData;
   }
 
@@ -133,8 +135,8 @@ class ProductRepository extends GetxController {
   }
 
   // Add Checkout Product
-  checkoutProduct(
-      CheckoutModel checkout, BuildContext context, argument) async {
+  checkoutProduct(CheckoutModel checkout, BuildContext context,
+      argument) async {
     final _db = FirebaseFirestore.instance;
 
     for (var item in argument) {
@@ -161,7 +163,7 @@ class ProductRepository extends GetxController {
   // Get Recipe Recommendations
   Future<List> getRecommendations(String ingredients) async {
     final response = await http.post(
-      Uri.parse('http://192.168.11.107:8005/recommend_by_ingredients'),
+      Uri.parse('http://10.0.2.2:8005/recommend_by_ingredients'),
       body: {'ingredients': ingredients},
     );
 
@@ -179,7 +181,7 @@ class ProductRepository extends GetxController {
   // Get Recipe Recommendations
   Future<List> getWeatherRecipe(String weather) async {
     final response = await http.post(
-      Uri.parse('http://192.168.11.107:8005/recommend_by_weather'),
+      Uri.parse('http://10.0.2.2:8005/recommend_by_weather'),
       body: {'weather': weather},
     );
 
