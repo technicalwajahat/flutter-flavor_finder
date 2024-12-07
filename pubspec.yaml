@@ -44,17 +44,17 @@ dependencies:
   cloud_firestore:
   provider: ^6.1.2
   firebase_storage:
-  geolocator: ^12.0.0
+  geolocator: ^13.0.2
   image_picker: ^1.1.2
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
   flutter_native_splash:
   auto_size_text: ^3.0.0
   cupertino_icons: ^1.0.8
-  shared_preferences: ^2.2.3
+  shared_preferences: ^2.3.3
   permission_handler: ^11.3.1
   flutter_colorpicker: ^1.1.0
-  google_generative_ai: ^0.4.3
-  flutter_launcher_icons: ^0.13.1
+  google_generative_ai: ^0.4.6
+  flutter_launcher_icons: ^0.14.2
   persistent_shopping_cart: ^0.0.7
 
 dev_dependencies:
