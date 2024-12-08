@@ -1,16 +1,29 @@
-# flavour_finder
+# Flavour Finder  
 
-Flavour Finder Mobile Project - Flutter
+Flavour Finder is an innovative recipe recommendation platform that helps users discover recipes based on the ingredients they have. The platform supports user and vendor management for seamless order tracking and includes an AI-powered chatbot, *Gemini*, to assist users in their culinary journey.  
 
-## Getting Started
+## Features  
 
-This project is a starting point for a Flutter application.
+- **Recipe Recommendations**: Suggests recipes based on user-provided ingredients.  
+- **User and Vendor Dashboards**:  
+  - Users can browse recipes and place orders.  
+  - Vendors can manage orders and update inventory.  
+- **Chatbot Gemini**: Provides instant assistance and answers to user queries.  
+- **Order Management**: Streamlines the process of placing and fulfilling orders.  
+- **Machine Learning Integration**: Uses Flask API for intelligent recipe recommendations.  
 
-A few resources to get you started if this is your first Flutter project:
+## Tech Stack  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Frontend**: Flutter, Dart  
+- **Backend**: Flask API (Python)  
+- **Database**: Firebase  
+- **Chatbot**: Gemini  
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Installation and Usage  
+
+### Prerequisites  
+
+Ensure you have the following installed:  
+- [Flutter SDK](https://flutter.dev/docs/get-started/install)  
+- [Python 3.10+](https://www.python.org/downloads/)  
+- Firebase setup for authentication and database management 
