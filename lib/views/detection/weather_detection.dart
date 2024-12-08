@@ -56,7 +56,7 @@ class _WeatherDetectionState extends State<WeatherDetection> {
       return;
     }
 
-    const apiKey = '8b90f023a818698c184bdd1f70e76ec3';
+    const apiKey = '';
     final url = Uri.parse(
         'https://api.openweathermap.org/data/2.5/weather?lat=31.520370&lon=74.358749&appid=$apiKey&units=metric');
     final response = await http.get(url);
